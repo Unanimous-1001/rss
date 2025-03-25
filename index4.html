@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manhwa Feed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            background-image: url('YOUR_BACKGROUND_IMAGE_URL'); /* Add background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-attachment: fixed; /* Keep image fixed during scrolling */
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover, .card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+            margin-right: 0;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-synopsis {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            max-height: 150px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .card-synopsis.expanded {
+            max-height: 1000px;
+        }
+
+        .card-genres {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .expand-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .expand-button:hover {
+            background-color: #0056b3;
+        }
+
+        #search-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        #search-icon:hover {
+            background-color: #0056b3;
+        }
+
+        #search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        #search-input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        @media (min-width: 600px) {
+            .card {
+                flex-direction: row;
+            }
+
+            .card img {
+                width: 200px;
+                height: 250px;
+                object-fit: cover;
+                margin-right: 20px;
+            }
+
+            .card-title {
+                font-size: 1.4em;
+            }
+
+            .card-synopsis {
+                max-height: 100px;
+            }
+
+            .card-synopsis.expanded {
+                max-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Manhwa Feed</h1>
+    <div id="feed-container">
+        </div>
+
+    <div id="search-icon">&#x1F50D;</div>
+
+    <div id="search-overlay">
+        <input type="text" id="search-input" placeholder="Search...">
+    </div>
+
+    <script>
+        // ... (Your JavaScript code remains the same) ...
+    </script>
+</body>
+</html>
