@@ -24,7 +24,7 @@ jobs:
         run: python generate_rss.py
       - name: Commit and Push
         run: |
-          git config --global user.email "your-bot-email@example.com" # Replace with your bot's email
+          git config --global user.email "noitamina999@gmail.com" # Replace with your bot's email
           git config --global user.name "RSS Bot" # Or your preferred bot name
           git add rss1.xml
           git commit -m "Update RSS feed"
