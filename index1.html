@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manhwa Feed</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            display: flex;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .card img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .card-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-synopsis {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            max-height: 100px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .card-synopsis.expanded {
+            max-height: 500px;
+        }
+
+        .card-genres {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .expand-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .expand-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Floating Search Icon */
+        #search-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        #search-icon:hover {
+            background-color: #0056b3;
+        }
+
+        /* Search Overlay */
+        #search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        #search-input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manhwa Feed</h1>
+    <div id="feed-container">
+        </div>
+
+    <div id="search-icon">&#x1F50D;</div>
+
+    <div id="search-overlay">
+        <input type="text" id="search-input" placeholder="Search...">
+    </div>
+
+    <script>
+        const searchIcon = document.getElementById('search-icon');
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchInput = document.getElementById('search-input');
+
+        searchIcon.addEventListener('click', () => {
+            searchOverlay.style.display = 'flex';
+            searchInput.focus();
+        });
+
+        searchOverlay.addEventListener('click', (event) => {
+            if (event.target === searchOverlay) {
+                searchOverlay.style.display = 'none';
+            }
+        });
+
+        searchInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                const searchTerm = searchInput.value.toLowerCase();
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                    const synopsis = card.querySelector('.card-synopsis').textContent.toLowerCase();
+                    const genres = card.querySelector('.card-genres').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || synopsis.includes(searchTerm) || genres.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                searchOverlay.style.display = 'none';
+            }
+        });
+
+        fetch('https://unanimous-1001.github.io/rss/rss1.xml')
+            .then(response => response.text())
+            .then(xmlString => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
+                const items = xmlDoc.querySelectorAll('item');
+                const feedContainer = document.getElementById('feed-container');
+
+                items.forEach(item => {
+                    // ... (rest of your card creation code)
+                });
+            })
+            .catch(error => console.error('Error fetching RSS:', error));
+    </script>
+</body>
+</html>
