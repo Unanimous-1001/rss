@@ -162,8 +162,85 @@
     </div>
 
     <script>
-        // ... (Your JavaScript code remains the same) ...
-        // All of the javascript is the same as the previous example.
+             // ... (Your JavaScript code remains the same) ...
+        const searchIcon = document.getElementById('search-icon');
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchInput = document.getElementById('search-input');
+
+        searchIcon.addEventListener('click', () => {
+            searchOverlay.style.display = 'flex';
+            searchInput.focus();
+        });
+
+        searchOverlay.addEventListener('click', (event) => {
+            if (event.target === searchOverlay) {
+                searchOverlay.style.display = 'none';
+            }
+        });
+
+        searchInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                const searchTerm = searchInput.value.toLowerCase();
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                    const synopsis = card.querySelector('.card-synopsis').textContent.toLowerCase();
+                    const genres = card.querySelector('.card-genres').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || synopsis.includes(searchTerm) || genres.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                searchOverlay.style.display = 'none';
+            }
+        });
+
+        fetch('https://unanimous-1001.github.io/rss/rss1.xml')
+            .then(response => response.text())
+            .then(xmlString => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
+                const items = xmlDoc.querySelectorAll('item');
+                const feedContainer = document.getElementById('feed-container');
+
+                items.forEach(item => {
+                    const title = item.querySelector('title').textContent;
+                    const link = item.querySelector('link').textContent;
+                    const description = item.querySelector('description').textContent;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = description;
+                    const img = tempDiv.querySelector('img').getAttribute('src');
+                    const synopsis = tempDiv.textContent.split("Synopsis:")[1];
+                    const genres = tempDiv.textContent.split("Genres:")[1].split("Synopsis:")[0];
+
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <img src="${img}" alt="${title} Cover">
+                        <div class="card-content">
+                            <a href="${link}" class="card-title">${title}</a>
+                            <p class="card-genres">Genres: ${genres}</p>
+                            <p class="card-synopsis">${synopsis}</p>
+                            <button class="expand-button">Expand</button>
+                        </div>
+                    `;
+                    feedContainer.appendChild(card);
+
+                    // Expandable synopsis logic
+                    const synopsisElement = card.querySelector('.card-synopsis');
+                    const expandButton = card.querySelector('.expand-button');
+
+                    expandButton.addEventListener('click', () => {
+                        synopsisElement.classList.toggle('expanded');
+                        expandButton.textContent = synopsisElement.classList.contains('expanded') ? 'Collapse' : 'Expand';
+                    });
+                });
+            })
+            .catch(error => console.error('Error fetching RSS:', error));
     </script>
 </body>
 </html>
