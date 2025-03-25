@@ -167,6 +167,7 @@
             }
         });
 
+        // Fetch and Generate Cards from RSS Feed
         fetch('https://unanimous-1001.github.io/rss/rss1.xml')
             .then(response => response.text())
             .then(xmlString => {
@@ -176,7 +177,36 @@
                 const feedContainer = document.getElementById('feed-container');
 
                 items.forEach(item => {
-                    // ... (rest of your card creation code)
+                    const title = item.querySelector('title').textContent;
+                    const link = item.querySelector('link').textContent;
+                    const description = item.querySelector('description').textContent;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = description;
+                    const img = tempDiv.querySelector('img').getAttribute('src');
+                    const synopsis = tempDiv.textContent.split("Synopsis:")[1];
+                    const genres = tempDiv.textContent.split("Genres:")[1].split("Synopsis:")[0];
+
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <img src="${img}" alt="${title} Cover">
+                        <div class="card-content">
+                            <a href="${link}" class="card-title">${title}</a>
+                            <p class="card-genres">Genres: ${genres}</p>
+                            <p class="card-synopsis">${synopsis}</p>
+                            <button class="expand-button">Expand</button>
+                        </div>
+                    `;
+                    feedContainer.appendChild(card);
+
+                    // Expandable synopsis logic
+                    const synopsisElement = card.querySelector('.card-synopsis');
+                    const expandButton = card.querySelector('.expand-button');
+
+                    expandButton.addEventListener('click', () => {
+                        synopsisElement.classList.toggle('expanded');
+                        expandButton.textContent = synopsisElement.classList.contains('expanded') ? 'Collapse' : 'Expand';
+                    });
                 });
             })
             .catch(error => console.error('Error fetching RSS:', error));
