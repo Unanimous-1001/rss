@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+  <title>Manhwa Updates</title>
+  <link>https://yourmanhwawebsite.com</link>
+  <description>Latest Manhwa Updates and Information</description>
+  <language>en-us</language>
+  <pubDate>Tue, 25 Mar 2025 16:05:00 +0500</pubDate>
+
+  <item>
+    <title>Solo Leveling</title>
+    <link>https://yourmanhwawebsite.com/solo-leveling</link>
+    <description>
+      <![CDATA[
+        <img src="https://static.wikia.nocookie.net/only-i-level-up/images/a/a7/Solo_Leveling_Vol_1_Cover.jpg/revision/latest?cb=20200806141315" alt="Solo Leveling Cover" width="200"><br/>
+        <strong>Name:</strong> Solo Leveling<br/>
+        <strong>Rank:</strong> S<br/>
+        <strong>Genres:</strong> Action, Fantasy, Adventure, System<br/>
+        <strong>Synopsis:</strong> In a world where hunters battle monsters to protect humanity, Sung Jinwoo, an E-Rank hunter, is the weakest of them all. However, his life changes when he acquires a mysterious system that allows him to level up.
+      ]]>
+    </description>
+    <pubDate>Tue, 25 Mar 2025 16:10:00 +0500</pubDate>
+    <guid>https://yourmanhwawebsite.com/solo-leveling</guid>
+    <media:thumbnail url="https://static.wikia.nocookie.net/only-i-level-up/images/a/a7/Solo_Leveling_Vol_1_Cover.jpg/revision/latest?cb=20200806141315" />
+  </item>
+
+  <item>
+    <title>The Begining After The End</title>
+    <link>https://yourmanhwawebsite.com/tbate</link>
+    <description>
+      <![CDATA[
+        <img src="https://static.wikia.nocookie.net/tbate/images/1/1a/Vol_1_Novel_Cover.png/revision/latest?cb=20210214221711" alt="The Beginning After The End Cover" width="200"><br/>
+        <strong>Name:</strong> The Begining After The End<br/>
+        <strong>Rank:</strong> S<br/>
+        <strong>Genres:</strong> Action, Fantasy, Adventure, System<br/>
+        <strong>Synopsis:</strong> The Beginning After The End follows the life of the late King Grey after his untimely and mysterious death. Reborn as Arthur Leywin, he seeks to correct his past mistakes in the vibrant new continent of Dicathen, a world of magic and fantastical creatures. Equipped with the knowledge of a powerful king in his mid-thirties, Arthur navigates his new life as the magic-wielding child of two retired adventurers and gains purpose through each of his new experiences—something he lacked in his previous life. When a kind dragon sacrifices her life to protect him, Arthur resolves to live a sincere, kind, and courageous life with those he loves. With the help of a lost elf princess and the Elven Kingdom of Elenoir, Arthur begins his long journey to find his true place in the world. As the years pass, Arthur becomes more and more comfortable in this world, positioning himself as a young, but respected figure. However, deja-vu strikes as a war brews between Dicathen and the Vritra, a clan of banished deities now ruling over a faraway continent. Arthur must rise as a leader, despite his fear of becoming the war-hardened monster he once was in his past life. As the war rages on, Arthur discovers that he was not reborn to this world by chance… nor was he the only one.
+      ]]>
+    </description>
+    <pubDate>Tue, 25 Mar 2025 16:15:00 +0500</pubDate>
+    <guid>https://yourmanhwawebsite.com/tbate</guid>
+    <media:thumbnail url="https://static.wikia.nocookie.net/tbate/images/1/1a/Vol_1_Novel_Cover.png/revision/latest?cb=20210214221711" />
+  </item>
+
+</channel>
+</rss>
