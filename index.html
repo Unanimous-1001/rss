@@ -3,37 +3,79 @@
 <head>
     <title>Manhwa Feed</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .card {
             display: flex;
-            border: 1px solid #ddd;
-            margin: 10px;
-            padding: 10px;
-            align-items: flex-start;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            overflow: hidden;
+            width: 100%; /* Make cards take full width */
+            max-width: 800px; /* Optional: limit max width */
+            margin: 20px auto; /* Center cards */
         }
 
         .card img {
-            width: 150px;
-            height: auto;
-            margin-right: 15px;
+            width: 200px;
+            height: 250px; /* Unified image height */
+            object-fit: cover;
+            margin-right: 20px;
         }
 
         .card-content {
             flex-grow: 1;
+            padding: 20px;
         }
 
         .card-title {
-            font-size: 1.2em;
+            font-size: 1.4em;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            color: #333;
         }
 
         .card-synopsis {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            max-height: 100px; /* Initial height */
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .card-synopsis.expanded {
+            max-height: 500px; /* Expanded height */
         }
 
         .card-genres {
             font-style: italic;
             color: #777;
+            margin-bottom: 10px;
+        }
+
+        .expand-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .expand-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -67,11 +109,21 @@
                         <img src="${img}" alt="${title} Cover">
                         <div class="card-content">
                             <a href="${link}" class="card-title">${title}</a>
-                            <p class="card-synopsis">${synopsis}</p>
                             <p class="card-genres">Genres: ${genres}</p>
+                            <p class="card-synopsis">${synopsis}</p>
+                            <button class="expand-button">Expand</button>
                         </div>
                     `;
                     feedContainer.appendChild(card);
+
+                    // Expandable synopsis logic
+                    const synopsisElement = card.querySelector('.card-synopsis');
+                    const expandButton = card.querySelector('.expand-button');
+
+                    expandButton.addEventListener('click', () => {
+                        synopsisElement.classList.toggle('expanded');
+                        expandButton.textContent = synopsisElement.classList.contains('expanded') ? 'Collapse' : 'Expand';
+                    });
                 });
             })
             .catch(error => console.error('Error fetching RSS:', error));
