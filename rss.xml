@@ -41,5 +41,22 @@
     <media:thumbnail url="[Cover Image URL]" />
   </item>
 
+  <item>
+    <title>Solo Leveling</title>
+    <link>https://yourmanhwawebsite.com/solo-leveling</link>
+    <description>
+      <![CDATA[
+        <img src="https://static.wikia.nocookie.net/only-i-level-up/images/a/a7/Solo_Leveling_Vol_1_Cover.jpg/revision/latest?cb=20200806141315" alt="Solo Leveling Cover" width="200"><br/>
+        <strong>Name:</strong> Solo Leveling<br/>
+        <strong>Rank:</strong> 1<br/>
+        <strong>Genres:</strong> Action, Fantasy, Adventure, System<br/>
+        <strong>Synopsis:</strong> In a world where hunters battle monsters to protect humanity, Sung Jinwoo, an E-Rank hunter, is the weakest of them all. However, his life changes when he acquires a mysterious system that allows him to level up.
+      ]]>
+    </description>
+    <pubDate>Tue, 25 Jul 2023 12:00:00 GMT</pubDate>
+    <guid>https://yourmanhwawebsite.com/solo-leveling</guid>
+    <media:thumbnail url="https://static.wikia.nocookie.net/only-i-level-up/images/a/a7/Solo_Leveling_Vol_1_Cover.jpg/revision/latest?cb=20200806141315" />
+  </item>
+
   </channel>
 </rss>
